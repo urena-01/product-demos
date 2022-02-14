@@ -28,10 +28,11 @@
       name: apache
       image: docker.io/httpd
       state: started
-      volume:
-        - "{{ volume_path }}:/usr/local/apache2/htdocs"
       ports:
         - "8080:80"
+
+  - name: Copy file
+    shell: "podman cp apache:/usr/local/apache2/htdocs/index.html {{ volume_path }}/index.html"
 
   - name: Check Web Page
     shell: curl http://127.0.0.1:8080/index.html
