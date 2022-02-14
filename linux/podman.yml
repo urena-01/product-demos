@@ -2,7 +2,7 @@
 - name: Podman
   hosts: "{{ HOSTS }}"
   vars:
-    volume_path: podman
+    volume_path: ~/podman
     message: undef
 
   tasks:
