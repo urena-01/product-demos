@@ -13,16 +13,6 @@
       state: latest
     become: yes
 
-  - name: Create volume dir
-    ansible.builtin.file:
-      path: "{{ volume_path }}"
-      state: directory
-
-  - name: Create index.html
-    ansible.builtin.copy:
-      dest: "{{ volume_path }}/index.html"
-      content: "{{ message }}"
-
   - name: Run httpd container
     containers.podman.podman_container:
       name: apache
@@ -30,9 +20,6 @@
       state: started
       ports:
         - "8080:80"
-
-  - name: Copy file
-    shell: "podman cp apache:/usr/local/apache2/htdocs/index.html {{ volume_path }}/index.html"
 
   - name: Check Web Page
     shell: curl http://127.0.0.1:8080/index.html
