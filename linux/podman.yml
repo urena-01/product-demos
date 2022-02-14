@@ -23,21 +23,18 @@
       dest: "{{ volume_path }}/index.html"
       content: "{{ message }}"
 
-  - name: file permissions
-    shell: "chmod -R 775 {{ volume_path }} && chown -R 775:775 {{ volume_path }}"
-
   - name: Run httpd container
     containers.podman.podman_container:
       name: apache
       image: docker.io/httpd
       state: started
       volume:
-        - "{{ volume_path }}:/usr/local/apache2/htdocs"
+        - "{{ volume_path }}:/usr/local/apache2/htdocs:z"
       ports:
         - "8080:80"
 
   - name: Check Web Page
-    shell: curl http://127.0.0.1:8080
+    shell: curl http://127.0.0.1:8080/index.html
     register: web_output
     changed_when: false
 
