@@ -1,6 +1,7 @@
 ---
 - name: Podman
   hosts: "{{ HOSTS }}"
+  become: yes
   vars:
     volume_path: "{{ ansible_env.HOME }}"
     message: undef
@@ -21,9 +22,6 @@
     ansible.builtin.copy:
       dest: "{{ volume_path }}/index.html"
       content: "{{ message }}"
-
-  - name: Permissions
-    shell: "chmod -R 775 {{ volume_path }}"
 
   - name: Run httpd container
     containers.podman.podman_container:
