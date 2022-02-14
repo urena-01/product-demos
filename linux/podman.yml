@@ -23,6 +23,9 @@
       dest: "{{ volume_path }}/index.html"
       content: "{{ message }}"
 
+  - name: file permissions
+    shell: "chmod -R 775 {{ volume_path }} && chown -R 775:775 {{ volume_path }}"
+
   - name: Run httpd container
     containers.podman.podman_container:
       name: apache
