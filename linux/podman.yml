@@ -34,7 +34,7 @@
         - "8080:80"
 
   - name: Check Web Page
-    shell: curl http://127.0.0.1:8080/
+    shell: curl http://127.0.0.1:8080
     register: web_output
     changed_when: false
 
