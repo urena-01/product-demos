@@ -22,7 +22,7 @@
         - "8080:80"
 
   - name: Check Web Page
-    shell: podman exec apache echo {{ message }} > /usr/local/apache2/htdocs/index.html
+    shell: podman exec apache echo "{{ message }}" > /usr/local/apache2/htdocs/index.html
     register: web_output
     changed_when: false
 
