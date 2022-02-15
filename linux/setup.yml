@@ -2,16 +2,9 @@
 user_message: |
   Be sure to update the 'activation_key' and 'org_id' extra variables for 'LINUX / Register'
 controller_components:
-  - projects
   - credential_types
   - credentials
   - job_templates
-
-controller_projects:
-  - name: Fact Scan
-    organization: Default
-    scm_type: git
-    scm_url: 'https://github.com/ansible/awx-facts-playbooks.git'
 
 controller_credential_types:
   - name: "Insights Collection"
