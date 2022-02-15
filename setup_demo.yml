@@ -9,7 +9,18 @@
       include_vars:
         file: "all/setup.yml"
 
-    - name: Setup Components
+    - name: Setup Components for all demos
+      include_role:
+        name: "redhat_cop.controller_configuration.{{ item }}"
+      loop: "{{ controller_components }}"
+      when:
+        - controller_components | d("") | length > 0
+
+    - name: Chosen demo vars
+      include_vars:
+        file: "{{demo}}/setup.yml"
+
+    - name: Setup Components for chosen demo
       include_role:
         name: "redhat_cop.controller_configuration.{{ item }}"
       loop: "{{ controller_components }}"
