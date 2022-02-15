@@ -1,13 +1,21 @@
 ---
 - hosts: localhost
   gather_facts: no
-  vars_files:
-    - "{{demo}}/setup.yml"
-    - "facts_proj.yml"
   vars:
     controller_validate_certs: false
 
   tasks:
+    - include_vars:
+      file: "all/setup.yml"
+      name: all_systems
+
+    - include_vars:
+      file: "{{demo}}/setup.yml"
+      name: chosen_system
+    
+    - set_fact:
+        controller_components: "{{ chosen_system|combine(all_systems, recursive=True) }}"
+
     - name: Setup Components
       include_role:
         name: "redhat_cop.controller_configuration.{{ item }}"
