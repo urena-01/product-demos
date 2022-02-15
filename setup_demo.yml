@@ -5,15 +5,18 @@
     controller_validate_certs: false
 
   tasks:
-    - include_vars:
-      file: "all/setup.yml"
-      name: all_systems
+    - name: "Vars for all systems"
+      include_vars:
+        file: "all/setup.yml"
+        name: all_systems
 
-    - include_vars:
-      file: "{{demo}}/setup.yml"
-      name: chosen_system
+    - name: "Vars for chosen system" 
+      include_vars:
+        file: "{{demo}}/setup.yml"
+        name: chosen_system
     
-    - set_fact:
+    - name: "Combine var files"
+      set_fact:
         controller_components: "{{ chosen_system|combine(all_systems, recursive=True) }}"
 
     - name: Setup Components
