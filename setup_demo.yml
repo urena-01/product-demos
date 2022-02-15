@@ -7,15 +7,15 @@
     controller_validate_certs: false
 
   tasks:
-    - name: All demos setup
-      include_role:
-        name: "redhat_cop.controller_configuration.{{ item }}"
-      loop: "{{ lookup('file','all/setup.yml')}}"
+    - name: All demos vars
+      include_vars:
+        file: "all/setup.yml"
+        name: all_systems
 
     - name: Setup Components
       include_role:
         name: "redhat_cop.controller_configuration.{{ item }}"
-      loop: "{{ controller_components }}"
+      loop: "{{ all_systems.controller_components }}"
       when:
         - controller_components | d("") | length > 0
 
