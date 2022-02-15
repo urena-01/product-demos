@@ -3,6 +3,9 @@ This document aims to outline the requirements for the various forms of contribu
 
 **ALL** contributions are subject to review via pull request
 
+## Pull requests
+1) Ensure the "base repository" is set to "RedHatGov/product-demos" since this is a fork it defaults to it's parent "ansible/product-demos".
+
 ## New playbooks
 1) Create a new branch based on main
 2) Add your playbook to the appropriate OS/System subdirectory
