@@ -10,7 +10,7 @@
     - name: All demos setup
       include_role:
         name: "redhat_cop.controller_configuration.{{ item }}"
-      loop: "{{ lookup(file,all/setup.yml)}}"
+      loop: "{{ lookup(file,'all/setup.yml')}}"
 
     - name: Setup Components
       include_role:
