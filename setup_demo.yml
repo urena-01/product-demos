@@ -17,7 +17,7 @@
         name: "redhat_cop.controller_configuration.{{ item }}"
       loop: "{{ all_systems.controller_components }}"
       when:
-        - controller_components | d("") | length > 0
+        - all_systems.controller_components | d("") | length > 0
 
     - name: Print Message
       debug:
