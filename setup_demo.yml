@@ -10,14 +10,13 @@
     - name: All demos vars
       include_vars:
         file: "all/setup.yml"
-        name: all_systems
 
     - name: Setup Components
       include_role:
         name: "redhat_cop.controller_configuration.{{ item }}"
-      loop: "{{ all_systems.controller_components }}"
+      loop: "{{ controller_components }}"
       when:
-        - all_systems.controller_components | d("") | length > 0
+        - controller_components | d("") | length > 0
 
     - name: Print Message
       debug:
