@@ -3,6 +3,7 @@
   gather_facts: no
   vars_files:
     - "{{demo}}/setup.yml"
+    - "facts_proj.yml"
   vars:
     controller_validate_certs: false
 
