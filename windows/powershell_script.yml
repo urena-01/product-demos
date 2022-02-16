@@ -3,7 +3,7 @@
   hosts: "{{ HOSTS | default('windows') }}"
   gather_facts: false
   vars:
-    remote_dest: "C:\\Temp\\sample_script.ps1"
+    remote_dest: "C:\\sample_script.ps1"
   tasks:
   - name: Copy script to remote
     ansible.windows.win_copy:
