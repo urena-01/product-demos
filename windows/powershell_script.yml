@@ -7,7 +7,7 @@
   tasks:
   - name: Copy script to remote
     ansible.windows.win_copy:
-      src: "./sample_script.ps1"
+      src: "{{playbook_dir}}/sample_script.ps1"
       dest: "{{ remote_dest }}"
   
   - name: Run Script
