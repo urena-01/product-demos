@@ -11,4 +11,4 @@
     register: cat_fact
 
   - debug:
-      var: cat_fact
+      msg: "{{ cat_fact.output }}"
