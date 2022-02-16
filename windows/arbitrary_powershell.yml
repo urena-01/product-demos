@@ -2,12 +2,14 @@
 - name: Arbitrary PowerShell
   hosts: "{{ HOSTS | default('windows') }}"
   gather_facts: false
+  vars:
+    ps_script: (Invoke-RestMethod -Method 'GET' -Uri 'https://catfact.ninja/fact').fact
 
   tasks:
   - name: Get a cat fact
     ansible.windows.win_powershell:
       script: | 
-        (Invoke-RestMethod -Method 'GET' -Uri 'https://catfact.ninja/fact').fact
+        {{ ps_script }}
     register: cat_fact
 
   - debug:
