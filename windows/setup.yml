@@ -132,7 +132,7 @@ controller_templates:
           type: text
           variable: HOSTS
           required: false
-        - question_name: PowerShell Script
+        - question_name: PowerShell Script (Default returns random cat fact)
           type: textarea
           variable: ps_script
           default: "(Invoke-RestMethod -Method 'GET' -Uri 'https://catfact.ninja/fact').fact"
