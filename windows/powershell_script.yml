@@ -17,4 +17,4 @@
     register: ps_output
 
   - debug:
-      msg: "{{ ps_output.output }}"
+      var: ps_output
