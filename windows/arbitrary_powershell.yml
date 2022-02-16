@@ -4,10 +4,10 @@
   gather_facts: false
 
   tasks:
-  - name: Return a failure back to Ansible
+  - name: Get a cat fact
     ansible.windows.win_powershell:
-    script: | 
-      (Invoke-RestMethod -Method 'GET' -Uri 'https://catfact.ninja/fact').fact
+      script: | 
+        (Invoke-RestMethod -Method 'GET' -Uri 'https://catfact.ninja/fact').fact
     register: cat_fact
 
   - debug:
