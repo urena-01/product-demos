@@ -132,3 +132,8 @@ controller_templates:
           type: text
           variable: HOSTS
           required: false
+        - question_name: PowerShell Script
+          type: textarea
+          variable: ps_script
+          default: "(Invoke-RestMethod -Method 'GET' -Uri 'https://catfact.ninja/fact').fact"
+          required: true

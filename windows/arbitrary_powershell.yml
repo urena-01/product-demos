@@ -3,14 +3,14 @@
   hosts: "{{ HOSTS | default('windows') }}"
   gather_facts: false
   vars:
-    ps_script: (Invoke-RestMethod -Method 'GET' -Uri 'https://catfact.ninja/fact').fact
+    ps_script: undef
 
   tasks:
-  - name: Get a cat fact
+  - name: Run PowerShell
     ansible.windows.win_powershell:
       script: | 
         {{ ps_script }}
-    register: cat_fact
+    register: ps_output
 
   - debug:
-      msg: "{{ cat_fact.output }}"
+      msg: "{{ ps_output.output }}"
