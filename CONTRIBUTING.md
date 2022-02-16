@@ -27,14 +27,7 @@ This document aims to outline the requirements for the various forms of contribu
     ```ansible
     ---
     controller_components:
-    - projects
     - job_templates
-
-    controller_projects:
-    - name: Fact Scan
-        organization: Default
-        scm_type: git
-        scm_url: 'https://github.com/ansible/awx-facts-playbooks.git'
 
     controller_templates:
     ...
