@@ -1,0 +1,20 @@
+---
+- name: PowerShell Script
+  hosts: "{{ HOSTS | default('windows') }}"
+  gather_facts: false
+  vars:
+    remote_dest: "C:\\Temp\\sample_script.ps1"
+  tasks:
+  - name: Copy script to remote
+    ansible.windows.win_copy:
+      src: "./sample_script.ps1"
+      dest: "{{ remote_dest }}"
+  
+  - name: Run Script
+    ansible.windows.win_powershell:
+      script: | 
+        {{ remote_dest }} -ServiceState {{ service_state }}
+    register: ps_output
+
+  - debug:
+      msg: "{{ ps_output.output }}"
