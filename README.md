@@ -25,7 +25,7 @@ If you would like to contribute to this project please refer to [contribution gu
 
 2. If it has not been created for you, add a Project called `Ansible official demo project` with this repo as a source. NOTE: if you are using a fork, be sure that you have the correct URL. Update the project.
    
-3. Next, in the Setting's tab, go to jobs and click edit. Next, turn on, enable collection downloads and Enable Role Downloads. CLick save.
+3. Next, in the Setting's tab go to jobs and click edit. Next,enable collection downloads and Enable Role Downloads. CLick save.
    
 4. Finally, Create a Job Template called `Setup` with the following configuration:
   
